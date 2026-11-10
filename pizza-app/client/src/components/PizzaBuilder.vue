@@ -76,7 +76,7 @@ function add() {
       </div>
       <div class="row total-row">
         <span>Price per pizza</span>
-        <strong>{{ formatCents(unitPrice) }}</strong>
+        <strong data-testid="unit-price">{{ formatCents(unitPrice) }}</strong>
       </div>
     </div>
 

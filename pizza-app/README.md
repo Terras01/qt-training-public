@@ -15,7 +15,7 @@ Customers build pizzas, review their order and place it for pickup. They pay at 
 From this folder (`pizza-app/`):
 
 ```bash
-npm run install:all   # install server and client packages
+npm run install:all   # install root (Playwright), server, and client packages
 npm run build         # build the Vue app into client/dist
 npm start             # start the server on http://localhost:3000
 ```
@@ -38,7 +38,15 @@ npm run dev:client    # Vite on http://localhost:5173, proxies /api to :3000
 
 ```bash
 npm test              # API, validation, persistence, and client pricing tests
+npm run test:e2e      # Playwright browser tests for every acceptance criterion
 ```
+
+The Playwright tests in `e2e/` build the client and start the real server on a free port with a temporary SQLite file. They then drive the browser through each acceptance criterion (AC-1.1 to AC-4.3), and every test title starts with the AC it covers. The AC-4.3 test closes the browser and hard-kills the server mid-day, then checks that the orders and statuses are still there.
+
+- On Windows they use the installed Microsoft Edge, so no browser download is needed. Elsewhere, run `npx playwright install chromium` first, or set `PW_CHANNEL`.
+- To watch them run: `PW_SLOWMO=300 npx playwright test --headed --workers=1 --project=desktop`
+- For the interactive runner with step-by-step snapshots: `npx playwright test --ui`
+- After a run: `npx playwright show-report`
 
 ## Configuration
 

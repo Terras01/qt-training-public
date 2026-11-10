@@ -9,7 +9,7 @@ defineProps({
 
 <template>
   <ul class="order-items">
-    <li v-for="item in order.items" :key="item.id">
+    <li v-for="item in order.items" :key="item.id" data-testid="order-item">
       <span class="item-qty">{{ item.quantity }}×</span>
       <span class="item-desc">
         <strong>{{ item.size.name }} ({{ item.size.inches }}")</strong>
@@ -20,6 +20,6 @@ defineProps({
   </ul>
   <div class="row order-total">
     <span>Total</span>
-    <strong>{{ formatCents(order.totalCents) }}</strong>
+    <strong data-testid="order-total">{{ formatCents(order.totalCents) }}</strong>
   </div>
 </template>

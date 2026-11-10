@@ -17,7 +17,7 @@ const emit = defineEmits(['set-quantity', 'remove']);
     <p v-if="lines.length === 0" class="empty">Your order is empty. Build a pizza and add it to get started.</p>
 
     <ul v-else class="cart-lines">
-      <li v-for="line in lines" :key="line.key" class="cart-line">
+      <li v-for="line in lines" :key="line.key" class="cart-line" data-testid="cart-line">
         <div class="line-info">
           <div class="line-title">{{ describePizza(menu, line.sizeId, line.toppingIds).size }}</div>
           <div class="line-toppings">{{ describePizza(menu, line.sizeId, line.toppingIds).toppings }}</div>
@@ -43,7 +43,7 @@ const emit = defineEmits(['set-quantity', 'remove']);
               +
             </button>
           </div>
-          <strong class="line-total">{{ formatCents(lineTotal(menu, line)) }}</strong>
+          <strong class="line-total" data-testid="line-total">{{ formatCents(lineTotal(menu, line)) }}</strong>
           <button type="button" class="link-btn" :disabled="disabled" @click="emit('remove', line.key)">Remove</button>
         </div>
       </li>
@@ -51,7 +51,7 @@ const emit = defineEmits(['set-quantity', 'remove']);
 
     <div class="row order-total" aria-live="polite">
       <span>Total</span>
-      <strong>{{ formatCents(total) }}</strong>
+      <strong data-testid="cart-total">{{ formatCents(total) }}</strong>
     </div>
   </div>
 </template>

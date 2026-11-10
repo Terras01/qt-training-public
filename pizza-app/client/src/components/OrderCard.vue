@@ -11,7 +11,7 @@ const formatTime = (iso) => new Date(iso).toLocaleTimeString([], { hour: 'numeri
 </script>
 
 <template>
-  <article class="card order-card" :class="order.status === 'Ready' ? 'is-ready' : 'is-new'">
+  <article class="card order-card" :data-order-id="order.id" :class="order.status === 'Ready' ? 'is-ready' : 'is-new'">
     <header class="order-card-head">
       <div>
         <div class="order-id">#{{ order.id }}</div>

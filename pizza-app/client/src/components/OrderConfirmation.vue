@@ -16,7 +16,7 @@ onMounted(() => heading.value?.focus());
     <div class="check" aria-hidden="true">✓</div>
     <h2 id="confirm-heading" ref="heading" tabindex="-1">Thanks, {{ order.customerName }}! Your order is in.</h2>
     <p class="order-number">
-      Order number <strong>#{{ order.id }}</strong>
+      Order number <strong data-testid="order-number">#{{ order.id }}</strong>
     </p>
     <p>We've sent your order to the kitchen. Give the order number or your name at the counter when you pick up.</p>
 

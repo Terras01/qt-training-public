@@ -119,8 +119,9 @@ function startNewOrder() {
 
           <div v-if="submitError" class="alert error" role="alert">{{ submitError }}</div>
 
-          <button type="submit" class="btn primary block" :disabled="submitting" :aria-disabled="!canSubmit">
-            {{ submitting ? 'Placing order…' : `Place pickup order` }}
+          <!-- Stays clickable when the order is incomplete: clicking shows what's missing (see field-help). -->
+          <button type="submit" class="btn primary block" :disabled="submitting">
+            {{ submitting ? 'Placing order…' : 'Place pickup order' }}
           </button>
           <p class="hint center">No payment now. You'll pay at the counter.</p>
         </form>

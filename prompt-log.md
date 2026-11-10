@@ -81,3 +81,12 @@ Sorry, I wanted you to use Plan mode first. I just switched to that mode. Please
 I discared all current changes since I want to use plan mode first. Please continue now.
 
 **Summary:** Wrote a plan, which the user approved, then built the Neighborhood Pizza app in `pizza-app/`: an Express 5 + `node:sqlite` API (`server/src/`), a Vue 3 + Vite client with an order page and a kitchen board (`client/src/`), and a README. Added 21 API, validation and restart-persistence tests and 5 client pricing tests, all passing. Also smoke tested the built app, including a forced server kill and restart.
+
+## 2026-11-10 14:59 CST · pass-2
+
+**Prompt:**
+Can you please use Playwright to close the loop and test that the application meets the requirements that were given?
+
+Can you show Playwright so I can view your progress?
+
+**Summary:** Added Playwright end-to-end tests (`pizza-app/e2e/`, `playwright.config.js`). They run in the installed Edge against the real server with a temp SQLite file and cover AC-1.1 through AC-4.3, plus the section 5 expectations and a hard-kill restart. The suite caught an accessibility issue: the Place Order button was marked `aria-disabled` but still showed validation when clicked. I fixed it in `OrderView.vue` and added `data-testid` hooks to a few components. All 29 e2e tests pass (desktop and mobile), and a slowed, visible headed run also passed. The README now explains how to run and watch the tests.
