@@ -90,3 +90,10 @@ Can you please use Playwright to close the loop and test that the application me
 Can you show Playwright so I can view your progress?
 
 **Summary:** Added Playwright end-to-end tests (`pizza-app/e2e/`, `playwright.config.js`). They run in the installed Edge against the real server with a temp SQLite file and cover AC-1.1 through AC-4.3, plus the section 5 expectations and a hard-kill restart. The suite caught an accessibility issue: the Place Order button was marked `aria-disabled` but still showed validation when clicked. I fixed it in `OrderView.vue` and added `data-testid` hooks to a few components. All 29 e2e tests pass (desktop and mobile), and a slowed, visible headed run also passed. The README now explains how to run and watch the tests.
+
+## 2026-11-10 15:46 CST · pass-2
+
+**Prompt:**
+Please look up the latest Web Content Accessibility Guidelines, go through the pizza app that was recently built using Playwright and test to see what guidelines are not being followed. Please output these results to a report for me to review.
+
+**Summary:** Confirmed WCAG 2.2 is the current W3C Recommendation; WCAG 3.0 is still a draft. Audited the pizza app with axe-core and scripted Playwright checks in Edge, covering keyboard, focus, target size, reflow, text spacing, live regions and forced colors. Wrote the results to `pizza-app/ACCESSIBILITY-REPORT.md`: 4 failures (1.4.3, 1.4.11, 2.4.3, 4.1.3), 2 items that need a decision (2.2.2, plus 1.4.11 on the name input border), advisory items, and the criteria that passed. No app code changed. The audit scripts were kept out of the repo.
